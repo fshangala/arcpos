@@ -1,9 +1,21 @@
 import 'package:arcpos/theme.dart';
+import 'package:arcpos/viewmodels/app_viewmodel.dart';
+import 'package:arcpos/viewmodels/home_product_page_viewmodel.dart';
 import 'package:arcpos/views/home_view.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  // runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => AppViewModel()),
+        ChangeNotifierProvider(create: (context) => HomeProductPageViewModel()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
